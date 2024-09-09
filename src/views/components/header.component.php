@@ -19,9 +19,6 @@ use App\Application\Auth\Auth;
                     <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/contacts">Contacts</a>
-                    </li>
                     <?php
                         if (Auth::check()) {?>
                             <li class="nav-item">

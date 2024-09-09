@@ -20,6 +20,7 @@ services:
     image: mysql
     volumes: 
       - ./mysql-simple-sotial-network:/var/lib/mysql
+    user: '1000:1000'
     environment: 
       - MYSQL_ROOT_PASSWORD=root
     env_file:
