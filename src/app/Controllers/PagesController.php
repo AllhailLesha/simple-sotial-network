@@ -3,49 +3,27 @@
 namespace App\Controllers;
 
 use App\Application\Views\View;
-use Exception;
 
 class PagesController
 {
-    public function home(): void
+    public function index(): void
     {
-        View::show('pages/home', [
-            'title' => 'Home',
-        ]);
-    }
-
-    public function about(): void
-    {
-        View::show('pages/about', [
-            'title' => 'About',
-        ]);
-    }
-
-    public function contacts(): void
-    {
-        View::show('pages/contacts', [
-            'title' => 'Contacts',
+        View::show('pages/index', [
+            'title' => 'Главная',
         ]);
     }
 
     public function login(): void
     {
         View::show('pages/login', [
-            'title' => 'Login',
+            'title' => 'Авторизация',
         ]);
     }
 
-    public function register(): void
+    public function regist(): void
     {
-        View::show('pages/register', [
-            'title' => 'Register',
-        ]);
-    }
-
-    public function notFound(Exception $e): void
-    {
-        View::exception($e, [
-            'title' => 'Exception',
+        View::show('pages/regist', [
+            'title' => 'Регистрация',
         ]);
     }
 }

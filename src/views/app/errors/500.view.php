@@ -20,5 +20,8 @@ use App\Application\Views\View;
         <h2>500 SERVER ERROR</h2>
         </div>
     </main>
+
+<?php View::component('footer'); ?>
+
 </body>
 </html>

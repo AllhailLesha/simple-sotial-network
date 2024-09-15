@@ -17,10 +17,9 @@ services:
     user: '1000:1000'
   mysql-simple-sotial-network:
     container_name: mysql-simple-sotial-network
-    image: mysql
+    image: mysql    
     volumes: 
       - ./mysql-simple-sotial-network:/var/lib/mysql
-    user: '1000:1000'
     environment: 
       - MYSQL_ROOT_PASSWORD=root
     env_file:

@@ -12,8 +12,6 @@ class Model extends Connection implements ModelInterface
 
     protected string $updated_at;
 
-    protected ?string $token = null;
-
     protected array $fields = [];
 
     protected string $tableName;

@@ -28,5 +28,6 @@ use App\Application\Views\View;
         </div>
         </div>
     </main>
+    <?php View::component('footer'); ?>
 </body>
 </html>

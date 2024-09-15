@@ -20,5 +20,8 @@ use App\Application\Views\View;
         <h2>page <?= $message?> not Found</h2>
         </div>
     </main>
+
+<?php View::component('footer'); ?>
+
 </body>
 </html>
