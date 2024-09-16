@@ -17,7 +17,7 @@ class UserController
         $this->service = new UserService;
     }
 
-    public function register(Request $request)
+    public function register(Request $request): void
     {
         $request->validation([
             'email' => ['required', 'email'],
@@ -39,5 +39,36 @@ class UserController
         Alert::setMessage('Вы успешно зарегестрированы! Авторизуйтесь!', Alert::SUCCESS);
         Alert::danger(true);
         Redirect::to('/login');
+    }
+
+    public function login(Request $request): void
+    {
+        $request->validation([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (! $request->validationStatus()) {
+            Alert::setMessage('Проверьте правильность введенных полей', Alert::DANGER);
+            Redirect::to('/login');
+        }
+
+        $auth = $this->service->login(
+            $request->post('email'),
+            $request->post('password')
+        );
+
+        if (! $auth) {
+            Redirect::to('/login');
+        } else {
+            Error::cleanFields();
+            Alert::danger(true);
+            Redirect::to('/');
+        }
+    }
+
+    public function logout(): void
+    {
+        $this->service->logout();
     }
 }

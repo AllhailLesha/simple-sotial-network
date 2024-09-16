@@ -6,7 +6,7 @@ interface UserServiceInterface
 {
     public function register(array $data): void;
 
-    public function login(string $name, string $email, $password): void;
+    public function login(string $email, $password): bool;
 
     public function logout(): void;
 }

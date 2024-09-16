@@ -3,6 +3,7 @@
 use App\Application\Alerts\Alert;
 use App\Application\Config\Config;
 use App\Application\Views\View;
+use App\Application\Alerts\Error;
 ob_start();
 
 ?>
@@ -19,7 +20,7 @@ ob_start();
         <div class="container">
             <h2 class="text-center">Авторизация</h2>
 
-            <form class="w-50 mx-auto">
+            <form class="w-50 mx-auto" action="/login" method="post">
                 <?php 
                     if (Alert::success()) { ?>
                         <div class="alert alert-success" role="alert">
@@ -27,17 +28,27 @@ ob_start();
                         </div>
                     <?}
                 ?>
-                 <div class="mb-3">
-                    <label for="name" class="form-label">Имя</label>
-                    <input type="text" class="form-control" id="name" name="name">
-                </div>
+
+                <?php 
+                    if (Alert::danger()) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= Alert::danger(true); ?>
+                        </div>
+                    <?}
+                ?>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Электронная почта</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                    <input type="text" class="form-control <?= Error::has('email') ? 'is-invalid' : '' ?>" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                    <div class="invalid-feedback">
+                        <?= Error::get('email')?>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    <input type="password" class="form-control <?= Error::has('password') ? 'is-invalid' : '' ?>" id="exampleInputPassword1" name="password">
+                    <div class="invalid-feedback">
+                        <?= Error::get('password')?>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <p>Нет аккаунта? <a class="link-opacity-100" href="/regist">Регистрируйся!</a></p>

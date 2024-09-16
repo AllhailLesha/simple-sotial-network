@@ -4,7 +4,7 @@ namespace App\Application\Alerts;
 
 class Error implements ErrorInterface
 {
-    private static ?array $errors = [];
+    private static array $errors;
 
     private static ?array $fields = [];
 
@@ -15,8 +15,8 @@ class Error implements ErrorInterface
 
     public static function list(): array
     {
-        if (empty(self::$errors)) {
-            self::$errors = json_decode($_COOKIE['errors'], true);
+        if (! isset(self::$errors)) {
+            self::$errors = isset($_COOKIE['errors']) ? json_decode($_COOKIE['errors'], true) : [];
         }
 
         return self::$errors;
@@ -24,8 +24,8 @@ class Error implements ErrorInterface
 
     public static function fieldsList(): array
     {
-        if (empty(self::$fields)) {
-            self::$fields = json_decode($_COOKIE['fields'], true);
+        if (! isset(self::$fields)) {
+            self::$fields = isset($_COOKIE['errors']) ? json_decode($_COOKIE['fields'], true) : [];
         }
 
         return self::$fields;
