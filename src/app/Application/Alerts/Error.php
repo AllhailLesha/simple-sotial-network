@@ -6,7 +6,7 @@ class Error implements ErrorInterface
 {
     private static array $errors;
 
-    private static ?array $fields = [];
+    private static array $fields;
 
     public static function store(string $name, array $data): void
     {
@@ -25,7 +25,7 @@ class Error implements ErrorInterface
     public static function fieldsList(): array
     {
         if (! isset(self::$fields)) {
-            self::$fields = isset($_COOKIE['errors']) ? json_decode($_COOKIE['fields'], true) : [];
+            self::$fields = isset($_COOKIE['fields']) ? json_decode($_COOKIE['fields'], true) : [];
         }
 
         return self::$fields;

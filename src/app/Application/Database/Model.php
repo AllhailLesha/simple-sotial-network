@@ -18,6 +18,56 @@ class Model extends Connection implements ModelInterface
 
     protected array $collection = [];
 
+    /**
+     * Get the value of id
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     */
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of created_at
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set the value of created_at
+     */
+    public function setCreatedAt(string $created_at): void
+    {
+        $this->created_at = $created_at;
+    }
+
+    /**
+     * Get the value of updated_at
+     */
+    public function getUpdatedAt(): string
+    {
+        return $this->updated_at;
+    }
+
+    /**
+     * Set the value of updated_at
+     */
+    public function setUpdatedAt(string $updated_at): void
+    {
+        $this->updated_at = $updated_at;
+    }
+
     public function find(string $column, mixed $value, bool $many = false): array|bool|Model
     {
         $query = "SELECT * FROM $this->tableName WHERE `$column` = :$column";
@@ -83,5 +133,21 @@ class Model extends Connection implements ModelInterface
         $stmt = $this->connect()->prepare($query);
         $data['id'] = $this->id;
         $stmt->execute($data);
+    }
+
+    public function delete(int $id): void
+    {
+        $query = "DELETE FROM `$this->tableName` WHERE `id` = :id";
+        $stmt = $this->connect()->prepare($query);
+        $data['id'] = $id;
+        $stmt->execute($data);
+    }
+
+    public function all(): ?array
+    {
+        $query = "SELECT * FROM $this->tableName";
+        $stmt = self::connect()->query($query);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

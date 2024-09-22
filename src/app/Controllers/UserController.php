@@ -63,7 +63,7 @@ class UserController
         } else {
             Error::cleanFields();
             Alert::danger(true);
-            Redirect::to('/');
+            Redirect::to('/profile');
         }
     }
 

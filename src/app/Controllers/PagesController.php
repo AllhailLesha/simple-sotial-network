@@ -26,4 +26,12 @@ class PagesController
             'title' => 'Регистрация',
         ]);
     }
+
+    public function profile(): void
+    {
+        View::show('pages/profile', [
+            'title' => 'Профиль',
+            'pageTitle' => 'Профиль',
+        ]);
+    }
 }

@@ -1,0 +1,31 @@
+.profile__img {
+    background-color: #fff;
+}
+
+.profile {
+    padding: 10px;
+    border-bottom: 2px solid #979494;
+    background-color: #dfdbdb;
+    border-radius: 10px;
+}
+
+.profile__info-date {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.add-news {
+    padding-bottom: 20px;
+    border-bottom: 2px solid #979494;
+    margin-block: 60px;
+}
+
+.add-news__wrapper {
+    max-width: 540px;
+    width: 100%;
+}
+
+.card form {
+    padding: 10px;
+}
+

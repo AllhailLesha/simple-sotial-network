@@ -69,6 +69,22 @@ class User extends Model
     }
 
     /**
+     * Get the value of avatar
+     */
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * Set the value of avatar
+     */
+    public function setAvatar(?string $avatar): void
+    {
+        $this->avatar = $avatar;
+    }
+
+    /**
      * Set the value of password
      */
     public function setPassword(string $password): void

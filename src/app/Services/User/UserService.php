@@ -24,7 +24,7 @@ class UserService implements UserServiceInterface
     {
         $user = (new User)->find('email', $email);
         if (! $user) {
-            Alert::setMessage('Проверьте правильность введенных полей', Alert::DANGER);
+            Alert::setMessage('Пользователь с такой почтой не найден', Alert::DANGER);
 
             return false;
         }

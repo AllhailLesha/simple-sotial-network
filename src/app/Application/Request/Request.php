@@ -2,6 +2,8 @@
 
 namespace App\Application\Request;
 
+use App\Application\Config\Config;
+
 class Request implements RequestInterface
 {
     use RequestValidation;
@@ -12,11 +14,14 @@ class Request implements RequestInterface
 
     private array $files;
 
+    private array $imagesTypes;
+
     public function __construct(array $post, array $get, array $files)
     {
         $this->post = $post;
         $this->get = $get;
         $this->files = $files;
+        $this->imagesTypes = Config::get('app.imageTypes');
     }
 
     public function setPOST(array $data): void
@@ -56,7 +61,7 @@ class Request implements RequestInterface
     public function validation(array $rules): array|bool
     {
         return $this->validate(
-            $this->post,
+            [$this->post, $this->files],
             $rules
         );
     }

@@ -9,4 +9,8 @@ interface ModelInterface
     public function store(): void;
 
     public function update(array $data): void;
+
+    public function delete(int $id): void;
+
+    public function all(): ?array;
 }

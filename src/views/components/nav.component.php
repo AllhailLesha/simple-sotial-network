@@ -24,6 +24,13 @@ use App\Application\Auth\Auth;
               </a>
               <ul class="dropdown-menu">
                 <li>
+                    <?php
+                        if (Auth::check()) {?>
+                            <a class="nav-link" href="/profile">Профиль</a>
+                        <?}
+                    ?>
+                </li>
+                <li>
                 <form class="d-flex" role="search" action="/logout" method="post">
                     <?php
                         if (Auth::check()) {?>
